@@ -6,14 +6,22 @@ const mysql = require('mysql');
 
 // Create an instance of express
 const app = express();
+//define the connecton parameters for the dataabase
+const dbConfig = {
+  connectionLimit: 10,// The maximum number of connections 
+  // to create at once but  standard limit
+   
+  host: '127.0.0.1',
+  password: 'demoapp',
+  user: 'demoapp',
+  database: 'demoapp',
+
+
+}
 
 // Set up a MySQL connection
-const connection = mysql.createConnection({
-  host: 'localhost',     //  my  MySQL host
-  user: 'root',          //  my  MySQL username
-  password: '',          //  my  MySQL password
-  database: 'emmploy-test'     //  my database name
-});
+const connection = mysql.createConnection(dbConfig)
+
 
 // Connect to the MySQL database
 connection.connect((err) => {
